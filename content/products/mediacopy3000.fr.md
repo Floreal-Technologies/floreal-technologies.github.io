@@ -7,7 +7,7 @@ what = "Application de bureau"
 
 [[extra.actions]]
 label = "Lire plus…"
-url = "https://floreal.tech/fr/products/mediacopy3000"
+url = "/fr/products/mediacopy3000"
 
 primary = true
 

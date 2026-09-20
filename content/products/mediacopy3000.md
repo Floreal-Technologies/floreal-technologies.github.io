@@ -7,7 +7,7 @@ what = "Desktop application"
 
 [[extra.actions]]
 label = "Read more…"
-url = "https://floreal.tech/products/mediacopy3000/"
+url = "/products/mediacopy3000/"
 primary = true
 
 [[extra.actions]]
