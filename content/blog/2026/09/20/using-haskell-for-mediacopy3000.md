@@ -3,6 +3,7 @@ date = "2026-09-20"
 [taxonomies]
 tags = ["haskell", "mediacopy3000"]
 categories = ["In the forest"]
+authors = "Feriel Choutri de Tarlé"
 +++
 # Why we use Haskell for MediaCopy 3000
 

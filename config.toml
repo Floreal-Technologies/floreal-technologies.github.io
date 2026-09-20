@@ -8,6 +8,12 @@ compile_sass = true
 build_search_index = false
 generate_feeds = false
 
+taxonomies = [
+    {name = "categories", feed = true},
+    {name = "tags"},
+    {name = "authors"}
+]
+
 # English, the default language.
 [translations]
 language_nav = "Language"
