@@ -1,0 +1,3 @@
+[submodule "themes/floreal"]
+	path = themes/floreal
+	url = https://github.com/Floreal-Technologies/floreal-zola-theme
