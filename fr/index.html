@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="path">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,13 @@
 <link rel="alternate" hreflang="en" href="https://floreal.tech/">
 <link rel="alternate" hreflang="fr" href="https://floreal.tech/fr/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+/* Set the palette before first paint. */
+try {
+  var t = localStorage.getItem("floreal-theme");
+  if (t === "path" || t === "mountains") document.documentElement.dataset.theme = t;
+} catch (e) {}
+</script>
 <link rel="stylesheet" href="/styles.css">
 <meta property="og:title" content="Floréal Technologies">
 <meta property="og:description" content="Floréal Technologies: Open software, French touch, International reach.">
@@ -32,10 +39,17 @@
 <main class="page">
   <header class="brand">
     <h1>Floréal Technologies</h1>
-    <nav class="langs" aria-label="Langue">
-      <a href="/" hreflang="en">English</a>
-      <a href="/fr/" aria-current="true" hreflang="fr">Français</a>
-    </nav>
+    <div class="brand-nav">
+      <nav class="themes" aria-label="Fond" hidden>
+        <button type="button" data-shot="path" aria-pressed="true">Sentier</button>
+        <span class="sep" aria-hidden="true">·</span>
+        <button type="button" data-shot="mountains" aria-pressed="false">Montagnes</button>
+      </nav>
+      <nav class="langs" aria-label="Langue">
+        <a href="/" hreflang="en">English</a>
+        <a href="/fr/" aria-current="true" hreflang="fr">Français</a>
+      </nav>
+    </div>
   </header>
 
   <p class="tagline">Open software, French touch, International reach.</p>
@@ -65,9 +79,13 @@
     <span class="sep" aria-hidden="true">∴</span>
     <a href="https://digital-autonomy.institute/">Institute for Digital Autonomy</a>
   </p>
-  <p>Bannière de fond : <em>Path</em> de Risto Saukonpää, tirée des fonds d'écran de KDE Plasma,
+  <p class="credit" data-for="path">Bannière de fond : <em>Path</em> de Risto Saukonpää, tirée des fonds d'écran de KDE Plasma,
   <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.</p>
+  <p class="credit" data-for="mountains">Bannière de fond : photographie aérienne de John Towner, tirée d'
+  <a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.</p>
 </footer>
+
+<script src="/theme.js" defer></script>
 
 </body>
 </html>
