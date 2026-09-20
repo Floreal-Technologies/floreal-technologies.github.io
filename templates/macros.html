@@ -1,3 +1,0 @@
-{% macro srcset(shot, ext) -%}
-  {%- for w in shot.widths %}{{ shot.base | safe }}{{ w }}.{{ ext }} {{ w }}w{% if not loop.last %}, {% endif %}{% endfor -%}
-{%- endmacro srcset %}

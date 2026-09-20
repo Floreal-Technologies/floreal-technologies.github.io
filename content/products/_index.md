@@ -1,4 +1,6 @@
 +++
 title = "Products"
-render = false
+sort_by = "title"
+template = "products.html"
+page_template = "product.html"
 +++

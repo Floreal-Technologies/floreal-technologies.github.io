@@ -1,6 +1,5 @@
 +++
 title = "MediaCopy 3000"
-render = false
 
 [extra]
 what = "Desktop application"
@@ -21,3 +20,5 @@ url = "https://github.com/Floreal-Technologies"
 
 Secure media transfers between storage volumes, from set to post-prod.
 Ensure the **completeness** and **safety** of your data.
+
+<!-- more -->

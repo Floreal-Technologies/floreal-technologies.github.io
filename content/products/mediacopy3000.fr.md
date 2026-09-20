@@ -1,6 +1,5 @@
 +++
 title = "MediaCopy 3000"
-render = false
 
 [extra]
 what = "Application de bureau"
@@ -22,3 +21,5 @@ url = "https://github.com/Floreal-Technologies"
 Transferts de médias sécurisés entre vos volumes de stockage,
 depuis le plateau jusqu'en post-prod. Assurez-vous de la
 **complétude** et la **sûreté** de vos données.
+
+<!-- more -->
