@@ -1,0 +1,77 @@
+base_url = "https://floreal.tech"
+title = "Floréal Technologies"
+description = "Floréal Technologies: Open software, French touch, International reach."
+
+default_language = "en"
+compile_sass = false
+build_search_index = false
+generate_feeds = false
+
+# English, the default language.
+[translations]
+language_nav = "Language"
+background_nav = "Background"
+products_label = "Products"
+friends = "Our friends:"
+not_found = "This page does not exist."
+back_home = "Back to the home page"
+backdrop_path = "Path"
+backdrop_mountains = "Mountains"
+credit_path = '''Background: <em>Path</em> by Risto Saukonpää, from the KDE Plasma wallpapers, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
+credit_mountains = '''Background: aerial photograph by John Towner, from <a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
+
+[languages.fr]
+title = "Floréal Technologies"
+description = "Floréal Technologies: Open software, French touch, International reach."
+
+[languages.fr.translations]
+language_nav = "Langue"
+background_nav = "Fond"
+products_label = "Produits"
+friends = "Nos amis :"
+not_found = "Cette page n'existe pas."
+back_home = "Retour à l'accueil"
+backdrop_path = "Sentier"
+backdrop_mountains = "Montagnes"
+credit_path = '''Bannière de fond : <em>Path</em> de Risto Saukonpää, tirée des fonds d'écran de KDE Plasma, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
+credit_mountains = '''Bannière de fond : photographie aérienne de John Towner, tirée d'<a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
+
+[extra]
+# Which backdrop a first-time visitor sees.
+default_backdrop = "path"
+
+[[extra.friends]]
+name = "Guérilla.Studio"
+url = "https://guerilla.studio"
+
+[[extra.friends]]
+name = "Institute for Digital Autonomy"
+url = "https://digital-autonomy.institute/"
+
+# Two fixed URLs, so the language nav is listed rather than derived.
+[[extra.languages]]
+code = "en"
+label = "English"
+path = "/"
+
+[[extra.languages]]
+code = "fr"
+label = "Français"
+path = "/fr/"
+
+# The single source for the <picture> srcsets, the switcher buttons and the
+# table that theme.js reads. A backdrop's palette lives in styles.css, under
+# html[data-theme="<id>"], and its credit line under credit_<id> above.
+[[extra.backdrops]]
+id = "path"
+base = "/img/path-"
+widths = [1000, 1600, 2560]
+width = 2560
+height = 1600
+
+[[extra.backdrops]]
+id = "mountains"
+base = "/img/mountains-"
+widths = [1000, 1600, 2560]
+width = 2560
+height = 1708

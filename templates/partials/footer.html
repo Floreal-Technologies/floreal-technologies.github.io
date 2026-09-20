@@ -1,0 +1,13 @@
+<footer>
+  <p class="friends">{{ trans(key="friends", lang=lang) }}
+  {%- for friend in config.extra.friends %}
+    <a href="{{ friend.url | safe }}">{{ friend.name }}</a>
+    {%- if not loop.last %}
+    <span class="sep" aria-hidden="true">∴</span>
+    {%- endif %}
+  {%- endfor %}
+  </p>
+{%- for shot in config.extra.backdrops %}
+  <p class="credit" data-for="{{ shot.id }}">{{ trans(key="credit_" ~ shot.id, lang=lang) | safe }}</p>
+{%- endfor %}
+</footer>
