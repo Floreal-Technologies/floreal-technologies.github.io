@@ -18,16 +18,18 @@ taxonomies = [
 [translations]
 language_nav = "Language"
 background_nav = "Background"
-products_label = "Products"
+nav_label = "Pages"
+pagination_nav = "Pages of articles"
+newer = "Newer"
+older = "Older"
+article_nav = "Other articles"
+newer_article = "Newer"
+older_article = "Older"
 home_label = "Home"
 breadcrumb_nav = "Breadcrumb"
 friends = "Our friends:"
 not_found = "This page does not exist."
 back_home = "Back to the home page"
-backdrop_path = "Path"
-backdrop_mountains = "Mountains"
-credit_path = '''Background: <em>Path</em> by Risto Saukonpää, from the KDE Plasma wallpapers, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
-credit_mountains = '''Background: aerial photograph by John Towner, from <a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
 
 [languages.fr]
 title = "Floréal Technologies"
@@ -36,20 +38,76 @@ description = "Floréal Technologies: Open software, French touch, International
 [languages.fr.translations]
 language_nav = "Langue"
 background_nav = "Fond"
-products_label = "Produits"
+nav_label = "Pages"
+pagination_nav = "Pages d'articles"
+newer = "Plus récents"
+older = "Plus anciens"
+article_nav = "Autres articles"
+newer_article = "Plus récent"
+older_article = "Plus ancien"
 home_label = "Accueil"
 breadcrumb_nav = "Fil d'Ariane"
 friends = "Nos amis :"
 not_found = "Cette page n'existe pas."
 back_home = "Retour à l'accueil"
-backdrop_path = "Sentier"
-backdrop_mountains = "Montagnes"
-credit_path = '''Bannière de fond : <em>Path</em> de Risto Saukonpää, tirée des fonds d'écran de KDE Plasma, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
-credit_mountains = '''Bannière de fond : photographie aérienne de John Towner, tirée d'<a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
 
 [extra]
 # Which backdrop a first-time visitor sees.
 default_backdrop = "path"
+
+# What each photo is called in the switcher, and the line that credits it.
+[extra.backdrop_labels.en]
+path = "Path"
+mountains = "Mountains"
+
+[extra.backdrop_labels.fr]
+path = "Sentier"
+mountains = "Montagnes"
+
+[extra.backdrop_credits.en]
+path = '''Background: <em>Path</em> by Risto Saukonpää, from the KDE Plasma wallpapers, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
+mountains = '''Background: aerial photograph by John Towner, from <a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
+
+[extra.backdrop_credits.fr]
+path = '''Bannière de fond : <em>Path</em> de Risto Saukonpää, tirée des fonds d'écran de KDE Plasma, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
+mountains = '''Bannière de fond : photographie aérienne de John Towner, tirée d'<a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
+
+# What each taxonomy is called on its own pages, per language. A taxonomy named
+# nowhere here is written out as it stands: "authors" becomes "Authors".
+[extra.taxonomy_labels.en]
+categories = "Categories"
+tags = "Tags"
+authors = "Authors"
+
+[extra.taxonomy_labels.fr]
+categories = "Catégories"
+tags = "Étiquettes"
+authors = "Auteurs"
+
+# The pages the header bar links to, in the order it shows them. One list
+# serves both languages: "blog/" is /blog/ in English, /fr/blog/ in French.
+[[extra.nav]]
+key = "about"
+path = "about/"
+
+[[extra.nav]]
+key = "products"
+path = "products/"
+
+[[extra.nav]]
+key = "blog"
+path = "blog/"
+
+# What each entry of the bar is called, per language.
+[extra.nav_labels.en]
+about = "About"
+products = "Products"
+blog = "Blog"
+
+[extra.nav_labels.fr]
+about = "À propos"
+products = "Produits"
+blog = "Journal"
 
 [[extra.friends]]
 name = "Guérilla.Studio"
@@ -72,8 +130,8 @@ path = "/fr/"
 
 # The single source for the <picture> srcsets, the switcher buttons and the
 # table that floreal.js reads. The paths are relative to `static/`; the
-# templates run them through get_url(). A backdrop carries its own palette, and
-# its credit line is the credit_<id> above.
+# templates run them through get_url(). A backdrop carries its own palette; its
+# name and its credit line are in the two tables above.
 [[extra.backdrops]]
 id = "path"
 base = "img/path-"

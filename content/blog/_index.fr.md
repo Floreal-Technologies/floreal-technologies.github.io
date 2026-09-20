@@ -1,6 +1,6 @@
 +++
-title = "Blog"
-description = "Notes from the workshop."
+title = "Journal"
+description = "Des notes prises à l'atelier."
 weight = 2
 sort_by = "date"
 paginate_by = 5
