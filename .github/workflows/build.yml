@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      # Pinned to the same version as deploy.yml. The theme uses Tera 1 macros,
+      # which Zola 0.23 removed in favour of components.
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.22.1
+
+      - run: zola build
