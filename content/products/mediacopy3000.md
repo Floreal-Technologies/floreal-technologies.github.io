@@ -6,13 +6,13 @@ description = "MediaCopy 3000 offloads camera media between storage volumes and 
 what = "Desktop application"
 
 [[extra.actions]]
-label = "Install it"
-url = "https://docs.floreal.tech/mediacopy3000/installation"
+label = "Read more…"
+url = "https://floreal.tech/products/mediacopy3000/"
 primary = true
 
 [[extra.actions]]
-label = "Read the manual"
-url = "https://docs.floreal.tech/mediacopy3000/"
+label = "Install it"
+url = "https://docs.floreal.tech/mediacopy3000/installation"
 
 [[extra.actions]]
 label = "Source on GitHub"
