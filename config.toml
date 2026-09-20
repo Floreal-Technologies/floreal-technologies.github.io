@@ -117,6 +117,10 @@ url = "https://guerilla.studio"
 name = "Institute for Digital Autonomy"
 url = "https://digital-autonomy.institute/"
 
+[[extra.friends]]
+name = "Newtype SRL"
+url = "https://newtype.fr"
+
 # Two fixed URLs, so the language nav is listed rather than derived.
 [[extra.languages]]
 code = "en"
