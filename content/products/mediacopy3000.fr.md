@@ -26,12 +26,11 @@ depuis le plateau jusqu'en post-prod. Assurez-vous de la
 
 <!-- more -->
 
-## Ce qu'elle fait
+## Fonctionalités
 
-MediaCopy 3000 (MC3K) copie vos médias d'une carte mémoire vers vos volumes de
-stockage. Elle calcule l'empreinte de chaque fichier, puis elle relit chaque
-copie et compare les empreintes. Une copie qui ne correspond pas est signalée.
-Vous savez que le transfert est complet avant de formater la carte.
+MediaCopy 3000 (MC3K) copie vos médias entre vos volumes de stockage. Elle
+calcule l'empreinte de chaque fichier, et une copie qui ne correspond pas est
+signalée. Vous savez que le transfert est complet avant de formater la carte.
 
 ## Une intégrité qui reste avec les données
 
@@ -39,8 +38,8 @@ MC3K écrit un manifeste ASC Media Hash List (MHL) à côté de vos fichiers. Le
 format est ouvert. Tout outil qui lit le MHL peut vérifier les mêmes données
 plus tard, sur une autre machine et avec un autre logiciel.
 
-Vous pouvez aussi **sceller** une source sur place. MC3K lit le volume et écrit
-le manifeste sans faire de copie. Une copie faite plus tard dispose alors des
+Vous pouvez aussi **sceller** une source. MC3K lit le volume et écrit le
+manifeste sans faire de copie. Une copie faite plus tard dispose alors des
 empreintes d'origine pour la vérification.
 
 ## Aucune surprise
