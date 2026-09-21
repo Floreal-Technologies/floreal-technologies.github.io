@@ -11,6 +11,8 @@ authors = ["Feriel Choutri de Tarlé"]
 It is quite unorthodox to use the Haskell programming language for a desktop application, but so far the language
 has proven to be a robust platform to tackle the inherent complexity of graphical user interfaces.
 
+<!-- more -->
+
 ## Taming GTK with an Elm architecture
 
 ## Reliable domain modelling with rich and powerful types
