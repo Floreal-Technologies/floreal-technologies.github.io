@@ -2,7 +2,7 @@ base_url = "https://floreal.tech"
 title = "Floréal Technologies"
 description = "Floréal Technologies: Open software, French touch, International reach."
 
-default_language = "en"
+default_language = "en-GB"
 theme = "floreal"
 compile_sass = true
 build_search_index = false
@@ -23,14 +23,14 @@ description = "Floréal Technologies: Open software, French touch, International
 default_backdrop = "path"
 
 # The order of the language nav.
-language_order = ["en", "fr"]
+language_order = ["en-GB", "fr"]
 
 # What each language is called in that nav.
 [extra.language_labels]
-en = "English"
+en-GB = "English"
 fr = "Français"
 
-[extra.labels.en]
+[extra.labels.en-GB]
 about = "About"
 projects = "Projects"
 blog = "Blog"
@@ -52,7 +52,7 @@ mountains = "Montagnes"
 
 # The theme strings. English ships with the theme, so only the words this site
 # says differently are here.
-[extra.strings.en]
+[extra.strings.en-GB]
 friends = "Our friends:"
 not_found = "This page does not exist."
 back_home = "Back to the home page"
@@ -73,7 +73,7 @@ friends = "Nos amis :"
 not_found = "Cette page n'existe pas."
 back_home = "Retour à l'accueil"
 
-[extra.backdrop_credits.en]
+[extra.backdrop_credits.en-GB]
 path = '''Background: <em>Path</em> by Risto Saukonpää, from the KDE Plasma wallpapers, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
 mountains = '''Background: aerial photograph by John Towner, from <a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
 
