@@ -6,9 +6,14 @@ description = "MediaCopy 3000 transfère vos médias entre volumes de stockage e
 what = "Application de bureau"
 
 [[extra.actions]]
+label = "Lire plus…"
+url = "/fr/projects/mediacopy3000"
+
+primary = true
+
+[[extra.actions]]
 label = "Installez-le"
 url = "https://docs.floreal.tech/mediacopy3000/fr/installation"
-primary = true
 
 [[extra.actions]]
 label = "Le code sur GitHub"
