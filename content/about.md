@@ -8,7 +8,7 @@ are open, and the data our tools write stays readable without us.
 
 ## What we make
 
-[MediaCopy 3000](@/projects/mediacopy3000.md) moves camera media between storage
+[MediaCopy 3000](@/projects/mediacopy3000/index.md) moves camera media between storage
 volumes and verifies every copy against an ASC MHL manifest. It is the first
 of our tools; the [projects page](@/projects/_index.md) lists them all.
 

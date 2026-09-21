@@ -9,7 +9,7 @@ restent lisibles sans nous.
 
 ## Ce que nous fabriquons
 
-[MediaCopy 3000](@/projects/mediacopy3000.fr.md) déplace les médias d'une caméra
+[MediaCopy 3000](@/projects/mediacopy3000/index.fr.md) déplace les médias d'une caméra
 entre les volumes de stockage et vérifie chaque copie face à un manifeste ASC
 MHL. C'est le premier de nos outils ; la [page des projets](@/projects/_index.fr.md) les
 liste tous.

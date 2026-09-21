@@ -31,6 +31,10 @@ It computes a hash of each file, then it reads each copy back and compares the
 hashes. A copy that does not match is reported. You know that the transfer is
 complete before you format the card.
 
+<video controls width=700>
+  <source src="/projects/mediacopy3000/mc3k-offload.mp4" type="video/mp4" />
+</video>
+
 ## Integrity that stays with the data
 
 MC3K writes an ASC Media Hash List (MHL) manifest next to your files. The
