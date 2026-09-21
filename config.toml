@@ -14,28 +14,50 @@ taxonomies = [
     {name = "authors"}
 ]
 
-# English, the default language.
-[translations]
-language_nav = "Language"
-background_nav = "Background"
-nav_label = "Pages"
-pagination_nav = "Pages of articles"
-newer = "Newer"
-older = "Older"
-article_nav = "Other articles"
-newer_article = "Newer"
-older_article = "Older"
-home_label = "Home"
-breadcrumb_nav = "Breadcrumb"
-friends = "Our friends:"
-not_found = "This page does not exist."
-back_home = "Back to the home page"
-
 [languages.fr]
 title = "Floréal Technologies"
 description = "Floréal Technologies: Open software, French touch, International reach."
 
-[languages.fr.translations]
+[extra]
+# Which backdrop a first-time visitor sees.
+default_backdrop = "path"
+
+# The order of the language nav.
+language_order = ["en", "fr"]
+
+# What each language is called in that nav.
+[extra.language_labels]
+en = "English"
+fr = "Français"
+
+[extra.labels.en]
+about = "About"
+products = "Products"
+blog = "Blog"
+categories = "Categories"
+tags = "Tags"
+authors = "Authors"
+path = "Path"
+mountains = "Mountains"
+
+[extra.labels.fr]
+about = "À propos"
+products = "Produits"
+blog = "Journal"
+categories = "Catégories"
+tags = "Étiquettes"
+authors = "Auteurs"
+path = "Sentier"
+mountains = "Montagnes"
+
+# The theme strings. English ships with the theme, so only the words this site
+# says differently are here.
+[extra.strings.en]
+friends = "Our friends:"
+not_found = "This page does not exist."
+back_home = "Back to the home page"
+
+[extra.strings.fr]
 language_nav = "Langue"
 background_nav = "Fond"
 nav_label = "Pages"
@@ -51,19 +73,6 @@ friends = "Nos amis :"
 not_found = "Cette page n'existe pas."
 back_home = "Retour à l'accueil"
 
-[extra]
-# Which backdrop a first-time visitor sees.
-default_backdrop = "path"
-
-# What each photo is called in the switcher, and the line that credits it.
-[extra.backdrop_labels.en]
-path = "Path"
-mountains = "Mountains"
-
-[extra.backdrop_labels.fr]
-path = "Sentier"
-mountains = "Montagnes"
-
 [extra.backdrop_credits.en]
 path = '''Background: <em>Path</em> by Risto Saukonpää, from the KDE Plasma wallpapers, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
 mountains = '''Background: aerial photograph by John Towner, from <a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
@@ -72,42 +81,14 @@ mountains = '''Background: aerial photograph by John Towner, from <a href="https
 path = '''Bannière de fond : <em>Path</em> de Risto Saukonpää, tirée des fonds d'écran de KDE Plasma, <a href="/licenses/LGPL-3.0.txt">LGPL-3.0</a>.'''
 mountains = '''Bannière de fond : photographie aérienne de John Towner, tirée d'<a href="https://unsplash.com/photos/JgOeRuGD_Y4">Unsplash</a>.'''
 
-# What each taxonomy is called on its own pages, per language. A taxonomy named
-# nowhere here is written out as it stands: "authors" becomes "Authors".
-[extra.taxonomy_labels.en]
-categories = "Categories"
-tags = "Tags"
-authors = "Authors"
-
-[extra.taxonomy_labels.fr]
-categories = "Catégories"
-tags = "Étiquettes"
-authors = "Auteurs"
-
-# The pages the header bar links to, in the order it shows them. One list
-# serves both languages: "blog/" is /blog/ in English, /fr/blog/ in French.
 [[extra.nav]]
-key = "about"
 path = "about/"
 
 [[extra.nav]]
-key = "products"
 path = "products/"
 
 [[extra.nav]]
-key = "blog"
 path = "blog/"
-
-# What each entry of the bar is called, per language.
-[extra.nav_labels.en]
-about = "About"
-products = "Products"
-blog = "Blog"
-
-[extra.nav_labels.fr]
-about = "À propos"
-products = "Produits"
-blog = "Journal"
 
 [[extra.friends]]
 name = "Guérilla.Studio"
@@ -121,21 +102,6 @@ url = "https://digital-autonomy.institute/"
 name = "Newtype SRL"
 url = "https://newtype.fr"
 
-# Two fixed URLs, so the language nav is listed rather than derived.
-[[extra.languages]]
-code = "en"
-label = "English"
-path = "/"
-
-[[extra.languages]]
-code = "fr"
-label = "Français"
-path = "/fr/"
-
-# The single source for the <picture> srcsets, the switcher buttons and the
-# table that floreal.js reads. The paths are relative to `static/`; the
-# templates run them through get_url(). A backdrop carries its own palette; its
-# name and its credit line are in the two tables above.
 [[extra.backdrops]]
 id = "path"
 base = "img/path-"
@@ -143,8 +109,6 @@ widths = [1000, 1600, 2560]
 width = 2560
 height = 1600
 
-# The colours this photo is read against. Every one of them becomes a custom
-# property on html[data-theme="path"].
 [extra.backdrops.palette]
 ink = "oklch(96.35% 0.0073 132.42)"
 ink-dim = "oklch(80.78% 0.0228 138.98)"
