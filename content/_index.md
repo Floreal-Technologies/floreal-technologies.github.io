@@ -10,7 +10,7 @@ punchline = "Open software, French touch, International reach."
 
 [[extra.hero.actions]]
 label = "Our projects"
-url = "@/products/_index.md"
+url = "@/projects/_index.md"
 primary = true
 
 [[extra.hero.actions]]

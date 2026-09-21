@@ -10,7 +10,7 @@ punchline = "Logiciels libres, French touch, Portée internationale."
 
 [[extra.hero.actions]]
 label = "Nos projets"
-url = "@/products/_index.fr.md"
+url = "@/projects/_index.fr.md"
 primary = true
 
 [[extra.hero.actions]]

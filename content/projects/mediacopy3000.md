@@ -7,7 +7,7 @@ what = "Desktop application"
 
 [[extra.actions]]
 label = "Read more…"
-url = "/products/mediacopy3000/"
+url = "/projects/mediacopy3000/"
 primary = true
 
 [[extra.actions]]

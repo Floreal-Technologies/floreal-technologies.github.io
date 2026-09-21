@@ -32,7 +32,7 @@ fr = "Français"
 
 [extra.labels.en]
 about = "About"
-products = "Products"
+projects = "Projects"
 blog = "Blog"
 categories = "Categories"
 tags = "Tags"
@@ -42,7 +42,7 @@ mountains = "Mountains"
 
 [extra.labels.fr]
 about = "À propos"
-products = "Produits"
+projects = "Projets"
 blog = "Journal"
 categories = "Catégories"
 tags = "Étiquettes"
@@ -85,7 +85,7 @@ mountains = '''Bannière de fond : photographie aérienne de John Towner, tirée
 path = "about/"
 
 [[extra.nav]]
-path = "products/"
+path = "projects/"
 
 [[extra.nav]]
 path = "blog/"

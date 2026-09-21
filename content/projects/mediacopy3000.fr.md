@@ -7,7 +7,7 @@ what = "Application de bureau"
 
 [[extra.actions]]
 label = "Lire plus…"
-url = "/fr/products/mediacopy3000"
+url = "/fr/projects/mediacopy3000"
 
 primary = true
 
