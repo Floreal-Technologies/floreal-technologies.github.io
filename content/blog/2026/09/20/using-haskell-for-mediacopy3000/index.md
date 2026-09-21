@@ -44,8 +44,6 @@ In practice, this means that we can build the UI in ways that are
 completely artificial, since we do not need click on the UI to change the views,
 but simply sending messages to the engine.
 
----
-
 This enabled us to make a screenshot-taking utility that builds _Scenes_ and sets those scenes
 as the default state during application start-up. This is a particularly nifty way
 of doing so, because if the application is a complete black box, you have to resort
@@ -55,15 +53,22 @@ to automating user clicks, which is a massive hassle.
   <img src="/blog/2026/09/20/using-haskell-for-mediacopy3000/queue-catppuccin-light-latte.png" width="700" />
 </a>
 
+And as a bonus, because so much happens on the Haskell side, we can emulate the
+filesystem in memory during tests.
+
+---
+
 ## Reliable domain modelling with rich and powerful types
 
-Amongst all of the domain modelling that we have done thanks to Haskell types, we'd like to put the spotligth on Job events.
+Amongst all of the domain modelling that we have done thanks to Haskell types,
+we'd like to put the spotligth on Job events.
 
-Jobs are the abstract actions of offloading, verifying and sealing a media source. They are composed of many steps, and these steps
-emit events as they progress. Here is a simplified list of those events:
+Jobs are the abstract actions of offloading, verifying and sealing a media
+source. They are composed of many steps, and these steps emit events as they
+progress. Here is a simplified list of those events:
 
 * A job is **Planned**, **Finished** or has **Failed**;
-* The status of a file has **Changed**;
+* The **Status** of a file has **Changed**;
 * There is **Progress** with copying data;
 * The **Manifest** is being written and is done being written;
 
@@ -78,5 +83,40 @@ data JobEvent
   | MhlWritten OsPath
   | JobFinished JobResult
   | JobFailed Text
+
+data FileStatus
+  = Pending
+  | Hashing
+  | Copying
+  | Flushing
+  | Publishing
+  | Verifying
+  | Done FileOutcome
+
+data FileOutcome
+  = Ok
+  | HashMismatch Mismatch
+  | Missing
+  | New
+  | IoError Text
+  | Replaced Mismatch
   -- […]
 ```
+
+As you can see, the types are separated in a way that there are no possible confusion
+between success and failure states.
+
+Not only we emit events when data is being moved around, but we have an
+exhaustive enough view of the times where the application is waiting on the
+operating system to synchronise the file system and the memory.
+
+Since it's hard to tell what's going on when the external drive doesn't have a
+blinking LED, we have to tell the end-user that _something_ is happening.
+Otherwise they might believe that the application has frozen and would kill it.
+
+## In Conclusion
+
+An unorthodox choice, but so far Haskell is a perfectly fine language
+to interface with GTK. The documentation on the Haskell side is a bit lacking,
+but we expect to write about our applications' internals enough to help others
+do it too. Thank you Haskell!
