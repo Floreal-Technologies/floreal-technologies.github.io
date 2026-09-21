@@ -61,7 +61,7 @@ filesystem in memory during tests.
 ## Reliable domain modelling with rich and powerful types
 
 Amongst all of the domain modelling that we have done thanks to Haskell types,
-we'd like to put the spotligth on Job events.
+we'd like to put the spotlight on Job events.
 
 Jobs are the abstract actions of offloading, verifying and sealing a media
 source. They are composed of many steps, and these steps emit events as they
