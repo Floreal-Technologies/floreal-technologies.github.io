@@ -9,10 +9,18 @@ what = "Desktop application"
 label = "Read more…"
 url = "/projects/mediacopy3000/"
 primary = true
+where = "card"
 
 [[extra.actions]]
 label = "Install it"
 url = "https://docs.floreal.tech/mediacopy3000/installation"
+where = "card"
+
+[[extra.actions]]
+label = "Install it"
+url = "https://docs.floreal.tech/mediacopy3000/installation"
+primary = true
+where = "page"
 
 [[extra.actions]]
 label = "Source on GitHub"

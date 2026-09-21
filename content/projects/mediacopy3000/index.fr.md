@@ -8,12 +8,19 @@ what = "Application de bureau"
 [[extra.actions]]
 label = "Lire plus…"
 url = "/fr/projects/mediacopy3000"
-
+where = "card"
 primary = true
 
 [[extra.actions]]
 label = "Installez-le"
 url = "https://docs.floreal.tech/mediacopy3000/fr/installation"
+where = "card"
+
+[[extra.actions]]
+label = "Installez-le"
+url = "https://docs.floreal.tech/mediacopy3000/fr/installation"
+primary = "true"
+where = "page"
 
 [[extra.actions]]
 label = "Le code sur GitHub"
