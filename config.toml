@@ -14,6 +14,10 @@ taxonomies = [
     {name = "authors"}
 ]
 
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+style = "class"
+
 [languages.fr]
 title = "Floréal Technologies"
 description = "Floréal Technologies: Open software, French touch, International reach."
