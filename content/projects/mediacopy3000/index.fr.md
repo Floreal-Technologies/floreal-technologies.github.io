@@ -39,7 +39,7 @@ MediaCopy 3000 (MC3K) copie vos médias entre vos volumes de stockage. Elle
 calcule l'empreinte de chaque fichier, et une copie qui ne correspond pas est
 signalée. Vous savez que le transfert est complet avant de formater la carte.
 
-<video controls width=700>
+<video controls width="700" style="max-width: 100%; height: auto;">
   <source src="/projects/mediacopy3000/mc3k-offload.mp4" type="video/mp4" />
 </video>
 
