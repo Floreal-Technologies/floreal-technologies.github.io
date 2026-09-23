@@ -1,6 +1,7 @@
 +++
 title = "MediaCopy 3000"
 description = "MediaCopy 3000 offloads camera media between storage volumes and verifies every copy against an ASC MHL manifest."
+weight = 1
 
 [extra]
 what = "Desktop application"
@@ -24,13 +25,15 @@ where = "page"
 
 [[extra.actions]]
 label = "Source on GitHub"
-url = "https://github.com/Floreal-Technologies"
+url = "https://github.com/Floreal-Technologies/MediaCopy3000"
 +++
 
 Secure media transfers between storage volumes, from set to post-prod.
 Ensure the **completeness** and **safety** of your data.
 
 <!-- more -->
+
+---
 
 ## What it does
 
@@ -39,7 +42,7 @@ It computes a hash of each file, then it reads each copy back and compares the
 hashes. A copy that does not match is reported. You know that the transfer is
 complete before you format the card.
 
-<video controls width="700" style="max-width: 100%; height: auto;">
+<video controls width="700" style="max-width: 100;">
   <source src="/projects/mediacopy3000/mc3k-offload.mp4" type="video/mp4" />
 </video>
 
