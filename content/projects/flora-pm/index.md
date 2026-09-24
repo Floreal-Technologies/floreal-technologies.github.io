@@ -30,9 +30,10 @@ url = "https://github.com/flora-pm/flora-server"
 
 +++
 
-Flora.pm is an alternative package index for the Haskell ecosystem. It indexes
-packages from package repositories, and creates a more ergonomic experience for
-Haskellers browsing the ecosystem.
+Flora.pm is an alternative package index for the whole Haskell ecosystem.
+
+It indexes packages from package repositories like Hackage and Cardano,
+and creates a more ergonomic experience for Haskellers browsing the ecosystem.
 
 <!-- more -->
 
