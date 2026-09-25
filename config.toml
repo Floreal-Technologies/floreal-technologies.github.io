@@ -118,16 +118,10 @@ height = 1600
 [extra.backdrops.palette]
 ink = "oklch(96.35% 0.0073 132.42)"
 ink-dim = "oklch(80.78% 0.0228 138.98)"
-line = "rgba(241, 244, 239, 0.18)"
-tint = "rgba(241, 244, 239, 0.1)"
 card = "rgba(8, 15, 9, 0.62)"
-card-solid = "rgba(8, 15, 9, 0.9)"
 accent = "oklch(82.63% 0.1221 137.67)"
 sand = "oklch(82.77% 0.0638 73.81)"
-sand-lift = "oklch(88.34% 0.0514 72.83)"
-on-sand = "oklch(22.34% 0.0329 64.74)"
 bg = "oklch(15.02% 0.0148 150.01)"
-logo = "oklch(82.63% 0.1221 137.67)"
 focus-pos = "32% 62%"
 scrim = "radial-gradient(130% 100% at 30% 35%, rgba(7, 13, 8, 0.05) 0%, rgba(7, 13, 8, 0.45) 65%, rgba(7, 13, 8, 0.72) 100%), linear-gradient(to bottom, rgba(7, 13, 8, 0.45), rgba(7, 13, 8, 0.2) 45%, rgba(7, 13, 8, 0.7))"
 
@@ -141,16 +135,10 @@ height = 1708
 [extra.backdrops.palette]
 ink = "oklch(96.2% 0.0055 275)"
 ink-dim = "oklch(80.5% 0.018 272)"
-line = "rgba(233, 236, 245, 0.18)"
-tint = "rgba(233, 236, 245, 0.1)"
 card = "rgba(9, 10, 20, 0.62)"
-card-solid = "rgba(9, 10, 20, 0.9)"
 accent = "oklch(80% 0.11 25)"
 sand = "oklch(83% 0.07 32)"
-sand-lift = "oklch(88.5% 0.056 33)"
-on-sand = "oklch(24% 0.04 25)"
 bg = "oklch(16.5% 0.022 275)"
-logo = "oklch(83% 0.07 32)"
 focus-pos = "50% 55%"
 # Lighter than the path scrim: the photo is already dark. The top stays
 # dimmed, because the sky sits behind the title.
