@@ -27,7 +27,7 @@ when the desktop switches between light and dark themes.
 
 To keep this post readable, the code that you will see will not be complete,
 in order for me to underline the main concepts. You can find the whole
-project at https://github.com/Floreal-Technologies/adwaita-todo
+project at <https://github.com/Floreal-Technologies/adwaita-todo>.
 
 ## Your first window
 
@@ -47,8 +47,8 @@ import GI.GTK qualified as Gtk
 
 main :: IO ()
 main = do
-  -- The `new X [attribute := value]` syntax creates a Gtk object
-  -- with its properties.
+  -- The `new X [#attribute := value]` syntax creates a Gtk object
+  -- with its properties. The hash syntax is called OverloadedLabels.
   app <- new Adw.Application [#applicationId := "tech.floreal.TodoApp"]
   -- We connect the "activate" signal to the "activate" handler.
   on app #activate (activate app)
@@ -80,7 +80,35 @@ and its dimensions are 480 by 640.
 [Adw.Application]: https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.10/class.Application.html
 
 
-## Model, Message & Update
+## Model-View-Update: The Elm Architecture
+
+[The Elm Architecture](https://guide.elm-lang.org/architecture/) (or TEA) is a pattern
+for architecting interactive programs. At its core are three concepts:
+
+<dl>
+  <dt><strong>Model</strong></dt>
+  <dd>The state of the application</dd>
+
+  <dt><strong>View</strong></dt>
+  <dd>The way to turn the <strong>Model</strong> into a user interface (HTML, GTK, etc)</dd>
+
+  <dt><strong>Update</strong></dt>
+  <dd>The way to update your <strong>Model</strong> based on <strong>Messages</strong></dd>
+</dl>
+
+Alongside those concepts we can find
+
+<dl>
+  <dt><strong>Message</strong></dt>
+  <dd>An enumeration of all the possible interactions of the user with the application</dd>
+
+  <dt><strong>Effects</strong></dt>
+  <dd>Not only does the <strong>Update</strong> function return an updated <strong>Model</strong>,
+      but it returns also a list of actions to be performed on the side, called Effects.</dd>
+</dl>
+
+
+## The Todo App
 
 Now has come the time to represent our application state and its actions.
 In the spirit of the Elm Architecture, everything will be modelled as
@@ -107,17 +135,22 @@ data Model = Model
   }
   deriving stock (Eq, Show)
 
+-- In our case, the effect here represents
+-- saving the todo-list on disk.
 data Effect = Save [Todo]
   deriving stock (Eq, Show)
 
-emptyModel :: Model
-emptyModel = Model
+init :: Model
+init = Model
   { todos = Map.empty
   , nextId = TodoId 0
   }
 ```
 
 ### The messages
+
+User interactions with the application are modelled as Messages:
+A known set of actions for which have clear actions that modify the model.
 
 Let's start with a couple of messages that our application is susceptible to produce
 
@@ -162,7 +195,7 @@ Let's now open GHCi and try things out:
 ```haskell
 $ cabal repl
 -- Let's add a task to buy leeks
-ghci> let (m1, e1) = update (Add "Buy leeks") emptyModel
+ghci> let (m1, e1) = update (Add "Buy leeks") init
 
 -- This triggers a "Save" effect for an unfinished task
 ghci> e1
@@ -376,7 +409,7 @@ run app = do
       , #defaultWidth := 480
       , #defaultHeight := 640
       ]
-  ref <- newIORef Model.emptyModel
+  ref <- newIORef Model.init
   let {- rec -}
       dispatch :: Model.Message -> IO ()
       dispatch message =
@@ -392,7 +425,7 @@ run app = do
         content <- View.view dispatch newModel
         Adw.applicationWindowSetContent window (Just content)
 
-  content <- View.view dispatch Model.emptyModel
+  content <- View.view dispatch Model.init
   Adw.applicationWindowSetContent window (Just content)
   Gtk.windowPresent window
 ```
