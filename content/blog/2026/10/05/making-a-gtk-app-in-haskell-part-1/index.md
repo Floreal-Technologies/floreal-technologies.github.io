@@ -37,8 +37,7 @@ application.
 Let's create the adwaita "[Application][Adw.Application]" that will handle
 resource management for us (including Adwaita stylesheets, which are pretty cool):
 
-```haskell
--- app/Main.hs
+```haskell,name=app/Main.hs
 module Main (main) where
 
 import GI.Awd qualified as Adw
@@ -107,7 +106,6 @@ Alongside those concepts we can find
       but it returns also a list of actions to be performed on the side, called Effects.</dd>
 </dl>
 
-
 ## The Todo App
 
 Now has come the time to represent our application state and its actions.
@@ -117,7 +115,7 @@ triggered and what they entail.
 
 ### The model
 
-```haskell
+```haskell,name=src/Todo/Model.hs
 newtype TodoId = TodoId Word
   deriving stock (Show)
   deriving newtype (Eq, Ord)
@@ -154,7 +152,7 @@ A known set of actions for which have clear actions that modify the model.
 
 Let's start with a couple of messages that our application is susceptible to produce
 
-```haskell
+```haskell,name=src/Todo/Model.hs
 data Message
   = Add Text
   | SetDoneStatus TodoId Bool
@@ -165,7 +163,7 @@ Not much so far, but we will add more as we go.
 
 ### Updating the model
 
-```haskell
+```haskell,name=src/Todo/Model.hs
 update :: Message -> Model -> (Model, [Effect])
 update message model = case message of
   Add raw -> 
@@ -230,17 +228,18 @@ It's always good to write down what are your expectations before starting a
 user interface.
 
 From experience, design does not immediately follow from data, and so I tend
-less and less to look at the shape of my data to inform my designs. In this case
-however it is pretty simple, but I like to draw.
+less and less to look at the shape of my data to inform my designs. 
 
-
+<figure>
 <img src="/blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/paper-draft.jpg"
-     width=480
-     height=640
      alt="Draft of the UI on a piece of paper"
 />
 
-Let's get to it.
+<figcaption>
+In our case it is pretty simple, but I like to draw.
+</figcaption>
+
+</figure>
 
 ### Widgets
 
@@ -289,8 +288,7 @@ We are going to make use of several widgets (Click on their name to see a screen
 
 With those building blocks at hand, let's write down how our widgets connect with each-other:
 
-```haskell
--- src/Todo/View.hs
+```haskell,name=src/Todo/View.hs
 module Todo.View (view) where
 
 -- Imports
@@ -398,7 +396,7 @@ The View gives back the new content as a Gtk widget, and we set this new content
 
 Here is the code:
 
-```haskell
+```haskell,name=src/Todo/Runtime.hs
 run :: Adw.Application -> IO ()
 run app = do
   window <-
@@ -432,16 +430,13 @@ run app = do
 
 Now, our Main module looks like this:
 
-```haskell
--- app/Main.hs
+```haskell,name=app/Main.hs
 module Main where
-
--- Exports
--- […]
 
 main :: IO ()
 main = do
-  app <- new Adw.Application [#applicationId := "tech.floreal.AdwaitaTodo"]
+  app <- new Adw.Application
+     [#applicationId := "tech.floreal.AdwaitaTodo"]
   on app #activate (Runtime.run app)
   Gio.applicationRun app Nothing
   pure ()
@@ -449,9 +444,16 @@ main = do
 
 And heeeere we go:
 
+<figure>
+  <img
+    alt="An application window with an input entry, and a list of two items 'Touch grass' and 'Buy leeks'"
+    src="/blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/end-result.png"
+  />
 
-![An application window with an input entry, and a list of two items "Touch grass" and "Buy leeks"](/blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/end-result.png)
+  <figcaption> Pretty rad. </figcaption>
+</figure>
 
+---
 
 This concludes this article. See you in part 2 for more features for our Todo List
 application!
