@@ -43,7 +43,7 @@ Flora.pm is a project made in collaboration with
 [Guérilla.Studio](https://guerilla.studio) to create the best interface to
 browse Haskell packages.
 
-<img  width="700" style="max-width: 100%;"
+<img  width="700"
   src="/projects/flora-pm/flora-screenshot.png"
   />
 
@@ -61,7 +61,7 @@ Recent years have seen an increasing amount of attacks targeting open-source
 packages and their maintainers, and so we are focused on protecting
 both package maintainers and users.
 
-<img  width="700" style="max-width: 100%;"
+<img  width="700"
   src="/projects/flora-pm/accelerate.png"
   />
  
