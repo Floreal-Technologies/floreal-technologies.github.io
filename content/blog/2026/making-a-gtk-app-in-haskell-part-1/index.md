@@ -16,14 +16,6 @@ many useful widgets and styles. Let's dive in!
 
 This series' intended audience is Haskellers with development experience with the language.
 
----
-
-_To keep this post readable, the code that you will see will not be complete,
-in order for me to underline the main concepts._<br>
-_You can find the whole project at <https://github.com/Floreal-Technologies/adwaita-todo>._
-
----
-
 ## GTK 4, Adwaita
 
 Adwaita is a library of GTK components that serve as the design language of
@@ -34,6 +26,21 @@ is encoded in libadwaita.
 Amongst its many features, the most interesting ones enable you to create
 application with responsive design, and runtime recoloring of the application
 when the desktop switches between light and dark themes.
+
+## Haskell and GTK
+
+Throughout this series we will use the [haskell-gi] toolkit,
+which auto-generates Haskell bindings from GTK libraries,
+and allows us to get a Haskell interface to GTK that you
+can still relate to the C API.
+
+---
+
+_To keep this post readable, the code that you will see will not be complete,
+in order for me to underline the main concepts._<br>
+_You can find the whole project at <https://github.com/Floreal-Technologies/adwaita-todo>._
+
+---
 
 ## Your first window
 
@@ -465,4 +472,5 @@ And heeeere we go:
 This concludes this article. See you in [Part 2] for more features for our Todo List
 application!
 
+[haskell-gi]: https://github.com/haskell-gi/haskell-gi
 [Part 2]: /blog/2026/making-a-gtk-app-in-haskell-part-2/
