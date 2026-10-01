@@ -131,7 +131,7 @@ forM_ (model.todos) $ \todo -> do
 
 Let us now add more domain logic to our application and allow for filtering on task status.
 
-With our application's architecture well-defined boundaries, we know that we have two places
+With our architecture's well-defined boundaries, we know that we have two places
 to touch: The Model and the View
 
 ### The Model

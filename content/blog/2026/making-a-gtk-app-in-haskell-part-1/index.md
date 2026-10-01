@@ -9,12 +9,13 @@ authors = ["Feriel Choutri de Tarlé"]
 +++
 
 In this series, we are going to build a todo-list application using
-Haskell, GTK 4, and the Adwaita library. The latter will provide us with
+Haskell, GTK 4, and the Adwaita library. Adwaita will provide us with
 many useful widgets and styles. Let's dive in!
 
 <!-- more -->
 
-This series' intended audience is Haskellers with development experience with the language.
+This series' intended audience is intermediate Haskellers,
+with development experience with the language.
 
 ## GTK 4, Adwaita
 
@@ -84,8 +85,8 @@ activate app = do
   Gtk.windowPresent window
 ```
 
-Lo and behold! An empty window. But it does display "Todos" as its title,
-and its dimensions are 480 by 640.
+Lo and behold! An empty window that displays "Todos" as its title, and its
+dimensions are 480 by 640.
 
 ![An empty window](/blog/2026/making-a-gtk-app-in-haskell-part-1/empty-window.png)
 
@@ -119,9 +120,12 @@ Alongside those concepts we can find
       but it returns also a list of actions to be performed on the side, called Effects.</dd>
 </dl>
 
+This approach was broadly popularised by Elm, and lends itself quite well to
+taming the imperative nature of the GTK toolkit.
+
 ## The Todo App
 
-Now has come the time to represent our application state and its actions.
+Now the time has come to represent our application state and its actions.
 In the spirit of the Elm Architecture, everything will be modelled as
 data structures, so that we have absolute visibility on what actions were
 triggered and what they entail.
@@ -161,7 +165,7 @@ init = Model
 ### The messages
 
 User interactions with the application are modelled as Messages:
-A known set of actions for which have clear actions that modify the model.
+A known set of actions for which we have clear actions that modify the model.
 
 Let's start with a couple of messages that the user may trigger to update the model:
 
