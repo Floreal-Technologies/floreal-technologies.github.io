@@ -23,9 +23,9 @@ the GNOME project. In short: Every decision that the GNOME project has made
 in terms of accessibility and style (the Human Interface Guidelines, HIG)
 is encoded in libadwaita.
 
-Amongst its many features, the most interesting ones enable you to create
-application with responsive design, and runtime recoloring of the application
-when the desktop switches between light and dark themes.
+Libawaita gives you many features: for instance it lets you create applications
+with responsive design, which are recolored at runtime when the desktop switches
+between light and dark themes.
 
 ## Haskell and GTK
 
@@ -163,7 +163,7 @@ init = Model
 User interactions with the application are modelled as Messages:
 A known set of actions for which have clear actions that modify the model.
 
-Let's start with a couple of messages that our application is susceptible to produce
+Let's start with a couple of messages that the user may trigger to update the model:
 
 ```haskell,name=src/Todo/Model.hs
 data Message
@@ -299,7 +299,7 @@ We are going to make use of several widgets (Click on their name to see a screen
 
 ### Time 2 Lego
 
-With those building blocks at hand, let's write down how our widgets connect with each-other:
+With those building blocks at hand, let's write down how our widgets connect with each other:
 
 ```haskell,name=src/Todo/View.hs
 module Todo.View (view) where
@@ -390,15 +390,15 @@ newBoxedList =
 
 ```
 
-We can't have a lot of visual feedback so far, so you will have to trust that it
-ressembles the pencil-and-paper draft from earlier.
+We can't get a lot of visual feedback yet, so you will have to trust that it
+resembles the pencil-and-paper draft from earlier.
 
 ## The Runtime
 
-Much similar to the content of the demo from the beginning of the article,
+Similarly to the content of the demo from the beginning of the article,
 this is where we plug the Model-View-Update trio.
 
-We will define two more functions: `dispatch` and `step`, and they love each-other very much.
+We will define two more functions: `dispatch` and `step`, and they love each other very much.
 
 `dispatch` takes a message, handles GTK execution loop priority, and calls `step` to perform
 the model update that will lead to the view update.
