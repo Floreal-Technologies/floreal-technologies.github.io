@@ -332,5 +332,7 @@ Which gives us this:
 <figcaption>I must have typed those items by hand over a hundred times to write these blog posts.</figcaption>
 </figure>
 
+See you now in Part 3 where we will tackle the subtle-yet-important aspects of Focus and Scrolling!
+
 [Part 1]: /blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/
 [text-display]: https://flora.pm/packages/@hackage/text-display

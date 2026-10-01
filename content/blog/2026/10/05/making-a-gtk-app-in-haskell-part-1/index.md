@@ -25,9 +25,13 @@ Amongst its many features, the most interesting ones enable you to create
 application with responsive design, and runtime recoloring of the application
 when the desktop switches between light and dark themes.
 
-To keep this post readable, the code that you will see will not be complete,
-in order for me to underline the main concepts. You can find the whole
-project at <https://github.com/Floreal-Technologies/adwaita-todo>.
+---
+
+_To keep this post readable, the code that you will see will not be complete,
+in order for me to underline the main concepts._<br>
+_You can find the whole project at <https://github.com/Floreal-Technologies/adwaita-todo>._
+
+---
 
 ## Your first window
 
@@ -455,5 +459,7 @@ And heeeere we go:
 
 ---
 
-This concludes this article. See you in part 2 for more features for our Todo List
+This concludes this article. See you in [Part 2] for more features for our Todo List
 application!
+
+[Part 2]: /blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/
