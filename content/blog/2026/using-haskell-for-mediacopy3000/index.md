@@ -49,8 +49,8 @@ as the default state during application start-up. This is a particularly nifty w
 of doing so, because if the application is a complete black box, you have to resort
 to automating user clicks, which is a massive hassle.
 
-<a href="/blog/2026/09/20/using-haskell-for-mediacopy3000/queue-catppuccin-light-latte.png">
-  <img src="/blog/2026/09/20/using-haskell-for-mediacopy3000/queue-catppuccin-light-latte.png" width="700"/>
+<a href="/blog/2026/using-haskell-for-mediacopy3000/queue-catppuccin-light-latte.png">
+  <img src="/blog/2026/using-haskell-for-mediacopy3000/queue-catppuccin-light-latte.png" width="700"/>
 </a>
 
 And as a bonus, because so much happens on the Haskell side, we can emulate the

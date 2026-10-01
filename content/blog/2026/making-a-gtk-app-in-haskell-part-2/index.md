@@ -26,7 +26,7 @@ _You can find the whole project at <https://github.com/Floreal-Technologies/adwa
 We are going to add two buttons to each task row, one for setting the task as done, and one for removing the task from the list altogether.
 First, let's grab our paper draft from earlier and add those elements:
 
-![The draft of the interface with buttons added to each row](/blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/paper-draft.jpg)
+![The draft of the interface with buttons added to each row](/blog/2026/making-a-gtk-app-in-haskell-part-2/paper-draft.jpg)
 
 The widgets used for this are
 
@@ -121,7 +121,7 @@ forM_ (model.todos) $ \todo -> do
 <figure>
 <img
   alt="The todo list with buttons at the end of each item's row"
-  src="/blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/right-side-buttons.png"
+  src="/blog/2026/making-a-gtk-app-in-haskell-part-2/right-side-buttons.png"
 />
 
 <figcaption>Yeah that looks about right.</figcaption>
@@ -216,7 +216,7 @@ bar.
 <figure>
 <img
   alt="A draft on paper showing the filters replacing the title"
-  src="/blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/filters-ui-draft.jpg"
+  src="/blog/2026/making-a-gtk-app-in-haskell-part-2/filters-ui-draft.jpg"
 />
 
 <figcaption>Bold choice.</figcaption>
@@ -275,7 +275,7 @@ And wouldn't you believe it, this is the end result!
 <figure>
 <img
   alt="The todo-list with filter toggles in the header instead of the application title"
-  src="/blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/filters-ui.png"
+  src="/blog/2026/making-a-gtk-app-in-haskell-part-2/filters-ui.png"
 />
 
 <figcaption>Pretty neat.</figcaption>
@@ -322,17 +322,17 @@ Which gives us this:
 
 <img
   alt=""
-  src="/blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/active-filter.png"
+  src="/blog/2026/making-a-gtk-app-in-haskell-part-2/active-filter.png"
 />
 
 <img
   alt=""
-  src="/blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/completed-filter.png"
+  src="/blog/2026/making-a-gtk-app-in-haskell-part-2/completed-filter.png"
 />
 <figcaption>I must have typed those items by hand over a hundred times to write these blog posts.</figcaption>
 </figure>
 
 See you now in Part 3 where we will tackle the subtle-yet-important aspects of Focus and Scrolling!
 
-[Part 1]: /blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/
+[Part 1]: /blog/2026/making-a-gtk-app-in-haskell-part-1/
 [text-display]: https://flora.pm/packages/@hackage/text-display

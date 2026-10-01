@@ -80,7 +80,7 @@ activate app = do
 Lo and behold! An empty window. But it does display "Todos" as its title,
 and its dimensions are 480 by 640.
 
-![An empty window](/blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/empty-window.png)
+![An empty window](/blog/2026/making-a-gtk-app-in-haskell-part-1/empty-window.png)
 
 [Adw.Application]: https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.10/class.Application.html
 
@@ -237,7 +237,7 @@ From experience, design does not immediately follow from data, and so I tend
 less and less to look at the shape of my data to inform my designs. 
 
 <figure>
-<img src="/blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/paper-draft.jpg"
+<img src="/blog/2026/making-a-gtk-app-in-haskell-part-1/paper-draft.jpg"
      alt="Draft of the UI on a piece of paper"
 />
 
@@ -453,7 +453,7 @@ And heeeere we go:
 <figure>
   <img
     alt="An application window with an input entry, and a list of two items 'Touch grass' and 'Buy leeks'"
-    src="/blog/2026/10/05/making-a-gtk-app-in-haskell-part-1/end-result.png"
+    src="/blog/2026/making-a-gtk-app-in-haskell-part-1/end-result.png"
   />
 
   <figcaption> Pretty rad. </figcaption>
@@ -464,4 +464,4 @@ And heeeere we go:
 This concludes this article. See you in [Part 2] for more features for our Todo List
 application!
 
-[Part 2]: /blog/2026/10/12/making-a-gtk-app-in-haskell-part-2/
+[Part 2]: /blog/2026/making-a-gtk-app-in-haskell-part-2/
