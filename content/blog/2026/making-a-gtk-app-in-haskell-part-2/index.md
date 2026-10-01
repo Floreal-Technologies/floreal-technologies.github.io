@@ -248,8 +248,8 @@ filterGroup = do
       toggle <-
           new
               Adw.Toggle
-              [ # name := display f -- Lowr-case identifier
-              , # label := Text.show f -- Capitalised identifier
+              [ # name := Text.show f -- Internal GTK name
+              , # label := Text.show f -- User-facing name
               ]
       Adw.toggleGroupAdd group toggle
   pure group
@@ -290,7 +290,7 @@ To use a Toggle Group, we have to set which of its options is "active"
 ```haskell,name=src/Todo/View.hs
 filters <- filterGroup
 
-Adw.toggleGroupSetActiveName filters (Just (toFilterId model.filter))
+Adw.toggleGroupSetActiveName filters (Just (Text.show model.filter))
 ```
 
 
@@ -335,4 +335,3 @@ Which gives us this:
 See you now in Part 3 where we will tackle the subtle-yet-important aspects of Focus and Scrolling!
 
 [Part 1]: /blog/2026/making-a-gtk-app-in-haskell-part-1/
-[text-display]: https://flora.pm/packages/@hackage/text-display
