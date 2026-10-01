@@ -230,7 +230,7 @@ Let us now design our interface.
 
 ## The View
 
-It's always good to write down what are your expectations before starting a
+It's always good to write down what your expectations are before starting a
 user interface.
 
 From experience, design does not immediately follow from data, and so I tend
@@ -396,9 +396,10 @@ We will define two more functions: `dispatch` and `step`, and they love each-oth
 `dispatch` takes a message, handles GTK execution loop priority, and calls `step` to perform
 the model update that will lead to the view update.
 
-`step` reads the model from an `IORef`, calls `update` (from `Model.hs`) on it to get the new model,
-write the new model to the `IORef`, and pass the new model and the dispatch function to the View.
-The View gives back the new content as a Gtk widget, and we set this new content in the window.
+`step` reads the model, calls `update` (from `Model.hs`) on it to get the new
+model, write the new model, and pass the new model and the dispatch function to
+the View. The View gives back the new content as a Gtk widget, and we set this
+new content in the window.
 
 Here is the code:
 
