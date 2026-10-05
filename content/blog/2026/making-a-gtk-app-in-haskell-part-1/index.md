@@ -54,7 +54,7 @@ resource management for us (including Adwaita stylesheets, which are pretty cool
 ```haskell,name=app/Main.hs
 module Main (main) where
 
-import GI.Awd qualified as Adw
+import GI.Adw qualified as Adw
 import GI.Gio qualified as Gio
 import GI.GTK qualified as Gtk
 
