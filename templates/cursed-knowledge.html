@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ get_url(path="cursed-knowledge.css", cachebust=true) | safe }}">
+{%- endblock head_extra %}
+
+{% block main %}
+  {%- set items = page.extra.items or [] -%}
+  {%- set items = items | sort(attribute="date") | reverse %}
+  <article class="standalone cursed">
+    <h1 class="page-title">{{ page.title }}</h1>
+
+    <div class="prose">
+      {{ page.content | safe }}
+    </div>
+
+    {%- if items | length > 0 %}
+    <ol class="timeline">
+      {%- for item in items %}
+      <li class="entry">
+        <time class="entry-date" datetime="{{ item.date }}">{{ item.date | date(format=date_format) }}</time>
+        <span class="entry-mark" aria-hidden="true"></span>
+        <div class="entry-body">
+          <div class="entry-head">
+            {%- if item.icon %}
+            <span class="entry-icon">{{ <floreal.icon name={item.icon} /> }}</span>
+            {%- endif %}
+            <h2 class="entry-title">{{ item.title }}</h2>
+            {%- if item.link %}
+            <a class="entry-link" href="{{ item.link.href | safe }}">[{{ item.link.text }}]</a>
+            {%- endif %}
+          </div>
+          {%- if item.description %}
+          <p class="entry-desc">{{ item.description }}</p>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+    {%- endif %}
+  </article>
+{% endblock main %}
