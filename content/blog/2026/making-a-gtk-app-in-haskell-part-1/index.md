@@ -54,9 +54,10 @@ resource management for us (including Adwaita stylesheets, which are pretty cool
 ```haskell,name=app/Main.hs
 module Main (main) where
 
+import Data.GI.Base (AttrOp (..), new, on)
 import GI.Adw qualified as Adw
 import GI.Gio qualified as Gio
-import GI.GTK qualified as Gtk
+import GI.Gtk qualified as Gtk
 
 main :: IO ()
 main = do
@@ -146,7 +147,7 @@ data Todo = Todo
 
 data Model = Model
   { todos :: Map TodoId Todo
-  , nextId :: TodoId 
+  , nextId :: TodoId
   }
   deriving stock (Eq, Show)
 
@@ -173,7 +174,7 @@ Let's start with a couple of messages that the user may trigger to update the mo
 data Message
   = Add Text
   | SetDoneStatus TodoId Bool
-deriving stock (Eq, Ord)
+  deriving stock (Eq, Ord)
 ```
 
 Not much so far, but we will add more as we go.
@@ -299,7 +300,7 @@ We are going to make use of several widgets (Click on their name to see a screen
   <dd>
     A view widget containing a page, as well as top and bottom bars.
   </dd>
-<dl>
+</dl>
 
 ### Time 2 Lego
 
@@ -321,15 +322,15 @@ view
 view dispatch model = do
   -- Here, we define our input row, with its title and a signal handler
   -- to activate the retrieval of our input when it is activated.
-  inputRow <- new Adw.EntryRow [#title := "New task"]
+  entry <- new Adw.EntryRow [#title := "New task"]
   on entry #entryActivated $ do
-    text <- Gtk.editableGetText inputRow
+    text <- Gtk.editableGetText entry
     dispatch (Add text) -- This is where we send our "Add" message
 
   -- EntryRow is a subclass of ListBox,
-  -- so we must append our inputRow inside entryBox
-  entryBox <- newBoxedList 
-  Gtk.listBoxAppend entryBox inputRow
+  -- so we must append our entry inside entryBox
+  entryBox <- newBoxedList
+  Gtk.listBoxAppend entryBox entry
 
   -- The ListBox that will contain our tasks
   todoList <- newBoxedList
