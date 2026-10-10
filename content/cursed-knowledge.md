@@ -4,6 +4,13 @@ description = "What we learnt the hard way, and wish we had not."
 template = "cursed-knowledge.html"
 
 [[extra.items]]
+title = "GHC heap corruption on Windows when using Template Haskell"
+date = 2026-10-10
+description = "On Windows, using Template Haskell can provoke heap corruption, leading to a crash. This is fixed by using the external code interpreter so that the Template Haskell code is executed in a different process (called iserv)."
+icon = "cib-windows"
+link = { href = "https://github.com/Floreal-Technologies/MediaCopy3000/pull/49", text = "MediaCopy 3000 PR" }
+
+[[extra.items]]
 title = "librsvg does not honour the prefers-color-scheme media query"
 date = 2026-10-07
 description = "librsvg does not support media queries (including prefers-color-scheme), which means we have to use GTK-specific strategies to make an SVG render differently depending on the desktop's preferred colour scheme."
