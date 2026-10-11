@@ -4,6 +4,13 @@ description = "Ce que nous avons appris à la dure, et que nous aurions aimé ne
 template = "cursed-knowledge.html"
 
 [[extra.items]]
+title = "Corruption du tas dans GHC sur Windows avec Template Haskell"
+date = 2026-10-11
+description = "Sur Windows, l'utilisation de Template Haskel avec la FFI C (comme GTK…) peut provoquer une corruption du tas, menant à un crash du compilateur. Le problème est réglé en séparant le code utilisant Template Haskell du code utilisant la FFI dans une sous-bibliothèque séparée."
+icon = "cib-windows"
+link = { href = "https://gitlab.haskell.org/ghc/ghc/-/work_items/27927", text = "Gitlab Haskell" }
+
+[[extra.items]]
 title = "librsvg n'honore pas la media query \"prefers-color-scheme\""
 date = 2026-10-07
 description = "librsvg ne supporte pas les media queries (y compris \"prefers-color-scheme\"), ce qui implique de devoir utiliser une stratégie spécifique à GTK pour rendre un SVG différemment selon le thème couleur de l'environnement de bureau."

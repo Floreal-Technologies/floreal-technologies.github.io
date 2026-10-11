@@ -5,10 +5,10 @@ template = "cursed-knowledge.html"
 
 [[extra.items]]
 title = "GHC heap corruption on Windows when using Template Haskell"
-date = 2026-10-10
-description = "On Windows, using Template Haskell can provoke heap corruption, leading to a crash. This is fixed by using the external code interpreter so that the Template Haskell code is executed in a different process (called iserv)."
+date = 2026-10-11
+description = "On Windows, using Template Haskell alongside C FFI (like GTK…) can provoke heap corruption, leading to a crash. This is fixed by splitting off the Template Haskell from the C FFI in a different sub-library."
 icon = "cib-windows"
-link = { href = "https://github.com/Floreal-Technologies/MediaCopy3000/pull/49", text = "MediaCopy 3000 PR" }
+link = { href = "https://gitlab.haskell.org/ghc/ghc/-/work_items/27927", text = "Haskell Gitlab" }
 
 [[extra.items]]
 title = "librsvg does not honour the prefers-color-scheme media query"
