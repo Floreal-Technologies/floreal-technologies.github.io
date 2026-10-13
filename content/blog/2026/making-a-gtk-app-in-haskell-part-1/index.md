@@ -116,10 +116,12 @@ Alongside those concepts we can find
   <dt><strong>Message</strong></dt>
   <dd>An enumeration of all the possible interactions of the user with the application</dd>
 
-  <dt><strong>Effects</strong></dt>
-  <dd>Not only does the <strong>Update</strong> function return an updated <strong>Model</strong>,
-      but it returns also a list of actions to be performed on the side, called Effects.</dd>
 </dl>
+
+Elm has one more concept, <strong>Effects</strong>: actions on the side, such
+as a write to disk, that <strong>Update</strong> returns with the new
+<strong>Model</strong>. We do not need them yet. They come in a later part,
+when we save the list to disk.
 
 This approach was broadly popularised by Elm, and lends itself quite well to
 taming the imperative nature of the GTK toolkit.
@@ -151,11 +153,6 @@ data Model = Model
   }
   deriving stock (Eq, Show)
 
--- In our case, the effect here represents
--- saving the todo-list on disk.
-data Effect = Save [Todo]
-  deriving stock (Eq, Show)
-
 init :: Model
 init = Model
   { todos = Map.empty
@@ -174,7 +171,7 @@ Let's start with a couple of messages that the user may trigger to update the mo
 data Message
   = Add Text
   | SetDoneStatus TodoId Bool
-  deriving stock (Eq, Ord)
+  deriving stock (Eq, Show)
 ```
 
 Not much so far, but we will add more as we go.
@@ -182,28 +179,21 @@ Not much so far, but we will add more as we go.
 ### Updating the model
 
 ```haskell,name=src/Todo/Model.hs
-update :: Message -> Model -> (Model, [Effect])
+update :: Message -> Model -> Model
 update message model = case message of
-  Add raw -> 
+  Add raw ->
     let text = Text.strip raw
         todoId@(TodoId n) = model.nextId
-        todo = Todo{ id = todoId, title = text, done = False }
+        todo = Todo {id = todoId, title = text, done = False}
     in if Text.null text
-    then (model, [])
-    else
-      withTodos
-        (Map.insert todo.id todo)
-        model{ nextId = TodoId (n + 1)}
+         then model
+         else
+           model
+             { todos = Map.insert todo.id todo model.todos
+             , nextId = TodoId (n + 1)
+             }
   SetDoneStatus todoId value ->
-    withTodos (Map.adjust (\todo -> todo {done = value}) todoId) model
- where
-  -- This is where we determine if our todos have changed,
-  -- so that we can save them.
-  withTodos f changed =
-    let result = changed {todos = f changed.todos}
-    in if result.todos == model.todos
-         then (result, [])
-         else (result, [Save (Map.elems result.todos)])
+    model {todos = Map.adjust (\todo -> todo {done = value}) todoId model.todos}
 ```
 
 Let's now open GHCi and try things out:
@@ -211,28 +201,28 @@ Let's now open GHCi and try things out:
 ```haskell
 $ cabal repl
 -- Let's add a task to buy leeks
-ghci> let (m1, e1) = update (Add "Buy leeks") init
-
--- This triggers a "Save" effect for an unfinished task
-ghci> e1
-[Save [Todo {id = TodoId 0, title = "Buy leeks", done = False}]]
+ghci> let m1 = update (Add "Buy leeks") init
+ghci> m1
+Model{ todos = fromList [
+          (TodoId 0, Todo{ id = TodoId 0
+                         , title = "Buy leeks"
+                         , done = False})]
+     , nextId = TodoId 1
+     }
 
 -- Let's set the task as done
-ghci> let (m2, e2) = update (SetDoneStatus (TodoId 0) True) m1
-
--- Since the status has changed, we have to save it
-ghci> e2
-[Save [Todo {id = TodoId 0, title = "Buy leeks", done = True}]]
-
--- Setting the task to True again does not trigger a Save effect,
--- so the effects list is empty.
-ghci> update (SetDoneStatus (TodoId 0) True) m2
-(Model{ nextId = TodoId 1
-      , todos = fromList [
+ghci> let m2 = update (SetDoneStatus (TodoId 0) True) m1
+ghci> m2
+Model{ todos = fromList [
           (TodoId 0, Todo{ id = TodoId 0
                          , title = "Buy leeks"
                          , done = True})]
-      }, []) -- ← empty list!
+     , nextId = TodoId 1
+     }
+
+-- A message that changes nothing gives back the same model
+ghci> update (SetDoneStatus (TodoId 0) True) m2 == m2
+True
 ```
 
 This is our domain logic, encoded as a sum type of messages and an update function to change the state.
@@ -437,7 +427,7 @@ run app = do
       step :: Model.Message -> IO ()
       step message = do
         oldModel <- readIORef ref
-        let (newModel, _effects) = Model.update message oldModel
+        let newModel = Model.update message oldModel
         writeIORef ref newModel
         content <- View.view dispatch newModel
         Adw.applicationWindowSetContent window (Just content)
