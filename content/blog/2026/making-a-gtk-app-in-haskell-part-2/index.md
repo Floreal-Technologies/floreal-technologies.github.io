@@ -58,8 +58,35 @@ For our checkbox, we want to give it a callback when clicked, which will change 
 ```haskell
 check <- new Gtk.CheckButton [#active := todo.done]
 on check #toggled $ do
-  active <- Gtk.checkButtonGetActive check
+  active <- Gtk.checkButtonGetActive ?self
   dispatch (SetDoneStatus todo.id active)
+```
+
+Note the `?self` in the handler: It is the check button that emitted the signal.
+The `haskell-gi` toolkit gives it to each handler as an implicit parameter, so the module needs
+the `ImplicitParams` extension.
+
+The handler must not read `check` itself. The signal keeps the handler alive,
+and a handler that captures `check` keeps the button alive. GTK can then never
+free the button, even after its row is gone. We rebuild the rows on each render
+in this part, so each leaked button adds up.
+
+The delete button needs a new message. Let's add `Delete` to the model,
+with its case in `update`:
+
+```diff,name=src/Todo/Model.hs
+ data Message
+   = Add Text
+   | SetDoneStatus TodoId Bool
++  | Delete TodoId
+   deriving stock (Eq, Show)
+```
+
+```diff,name=src/Todo/Model.hs
+   SetDoneStatus todoId value ->
+     model {todos = Map.adjust (\todo -> todo {done = value}) todoId model.todos}
++  Delete todoId ->
++    model {todos = Map.delete todoId model.todos}
 ```
 
 Our delete button will be as such:
@@ -89,7 +116,7 @@ todoRow dispatch todo = do
   -- The checkbox
   check <- new Gtk.CheckButton [#active := todo.done]
   on check #toggled $ do
-    active <- Gtk.checkButtonGetActive check
+    active <- Gtk.checkButtonGetActive ?self
     dispatch (SetDoneStatus todo.id active)
 
   -- The delete button
@@ -144,33 +171,28 @@ data Filter
   = All
   | Active
   | Completed
-  deriving stock (Eq, Show, Ord)
+  deriving stock (Eq, Show, Enum, Bounded)
 ```
+
+`Enum` and `Bounded` give us two things we need: the list of all the filters,
+and `fromEnum`, the index of a filter in that list.
 
 Next to it, we will define:
 
-1. A way to parse the name from `Text`
+1. The list of all the filters, in the order of the toggles that the view shows
 
 ```haskell,name=src/Todo/Model.hs
-parseFilter :: Text -> Maybe Filter
-parseFilter = \case
-  "All" -> Just All
-  "Active" -> Just Active
-  "Completed" -> Just Completed
-  _ -> Nothing
+allFilters :: [Filter]
+allFilters = [minBound .. maxBound]
 ```
 
-2. Predicates to filter our tasks based on their `done` status
+2. A predicate to filter our tasks based on their `done` status
 
 ```haskell,name=src/Todo/Model.hs
 matches :: Filter -> Todo -> Bool
 matches All _ = True
 matches Active todo = not todo.done
 matches Completed todo = todo.done
-
-visibleTasks :: Model -> [Todo]
-visibleTasks model =
-  List.filter (matches model.filter) (Map.elems model.todos)
 ```
   
 ```diff,name=src/Todo/Model.hs
@@ -194,16 +216,16 @@ visibleTasks model =
     | SetDoneStatus TodoId Bool
     | Delete TodoId
 +   | SetFilter Filter
-    deriving stock (Eq, Ord)
+    deriving stock (Eq, Show)
 ```
 
 And so we handle this new message in the `update` function:
 
 ```diff,name=src/Todo/Model.hs
-   Delete todoId -> do
-     withTodos (Map.delete todoId) model
-+  SetFilter newFilter -> do
-+    (model {filter = newFilter}, [])
+   Delete todoId ->
+     model {todos = Map.delete todoId model.todos}
++  SetFilter newFilter ->
++    model {filter = newFilter}
 ```
 
 ### The View
@@ -244,13 +266,8 @@ In code:
 filterGroup :: IO Adw.ToggleGroup
 filterGroup = do
   group <- new Adw.ToggleGroup []
-  forM_ [All, Active, Completed] $ \f -> do
-      toggle <-
-          new
-              Adw.Toggle
-              [ # name := Text.show f -- Internal GTK name
-              , # label := Text.show f -- User-facing name
-              ]
+  forM_ allFilters $ \f -> do
+      toggle <- new Adw.Toggle [#label := Text.show f]
       Adw.toggleGroupAdd group toggle
   pure group
 ```
@@ -284,25 +301,27 @@ And wouldn't you believe it, this is the end result!
 
 But so far they do not do much. Let's connect them to our `update` function.
 
-To use a Toggle Group, we have to set which of its options is "active"
-(for us it will be the current one, found in the Model).
+To use a Toggle Group, we have to set which of its toggles is "active"
+(for us it will be the current filter, found in the Model). The toggle group
+knows its toggles by index. We added them in the order of `allFilters`, so
+`fromEnum` gives the index of a filter.
 
 ```haskell,name=src/Todo/View.hs
 filters <- filterGroup
 
-Adw.toggleGroupSetActiveName filters (Just (Text.show model.filter))
+Adw.toggleGroupSetActive filters (fromIntegral (fromEnum model.filter))
 ```
 
 
-Then when the currently-active name changes, we get it and set it as the new
-filter. The `forM_` here traverses the 'Maybe' structure resulting from the
-parsing. If we cannot parse the active name string ('Nothing'), we do not set
-the new filter.
+Then, when the active index changes, we look up the filter at that index
+and set it as the new filter. When no toggle is active, the toggle group
+gives an invalid index. Then `lookup` gives `Nothing`, and the `forM_`
+does nothing.
 
 ```haskell,name=src/Todo/View.hs
-on filters (PropertyNotify #activeName) $ \_ -> do
-  name <- Adw.toggleGroupGetActiveName filters
-  forM_ (name >>= parseFilter) $ \newFilter ->
+on filters (PropertyNotify #active) $ \_ -> do
+  index <- Adw.toggleGroupGetActive filters
+  forM_ (lookup index (zip [0 ..] allFilters)) $ \newFilter ->
     dispatch (SetFilter newFilter)
 ```
 
@@ -311,7 +330,7 @@ And doing the actual filtering:
 ```diff,name=src/Todo/View.hs
 todoList <- newBoxedList
 -  forM_ (model.todos) $ \todo -> do
-+  forM_ (visibleTasks model) $ \todo -> do
++  forM_ (Map.filter (matches model.filter) model.todos) $ \todo -> do
      row <- todoRow dispatch todo
      Gtk.listBoxAppend todoList row
 ```
