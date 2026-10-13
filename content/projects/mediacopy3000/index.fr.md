@@ -29,7 +29,7 @@ url = "https://github.com/Floreal-Technologies"
 
 Transferts de médias sécurisés entre vos volumes de stockage,
 depuis le plateau jusqu'en post-prod. Assurez-vous de la
-**complétude** et la **sûreté** de vos données.
+**complétude** et la **sûreté** de vos données avec les [Media Hash Lists]
 
 <!-- more -->
 
@@ -70,3 +70,5 @@ MC3K est disponible sur les plateformes suivantes:
 * Arch Linux
 
 Le code source est publié sous licence GPL-3.0.
+
+[Media Hash Lists]: https://theasc.com/asc/asc-media-hash-list

@@ -29,7 +29,7 @@ url = "https://github.com/Floreal-Technologies/MediaCopy3000"
 +++
 
 Secure media transfers between storage volumes, from set to post-prod.
-Ensure the **completeness** and **safety** of your data.
+Ensure the **completeness** and **safety** of your data with [Media Hash Lists]
 
 <!-- more -->
 
@@ -72,3 +72,5 @@ MC3K is available on the following platforms
 * Arch Linux
 
 The source code is published under the GPL-3.0 licence.
+
+[Media Hash Lists]: https://theasc.com/asc/asc-media-hash-list
