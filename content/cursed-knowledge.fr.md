@@ -4,6 +4,13 @@ description = "Ce que nous avons appris à la dure, et que nous aurions aimé ne
 template = "cursed-knowledge.html"
 
 [[extra.items]]
+title = "GTK affiche toujours Maj avant Ctrl pour les raccourcis clavier"
+date = 2026-10-21
+description = "GTK lit un raccourci clavier comme un ensemble de modificateurs, puis les affiche dans un ordre fixe : Maj, Ctrl, Alt, Super. Un raccourci écrit <Control><Shift>p s'affiche donc Maj+Ctrl+P, dans gtk_accelerator_get_label, GtkShortcutLabel, AdwShortcutLabel et GtkShortcutsWindow. Pour afficher Ctrl+Maj+P, nous devons construire l'étiquette nous-mêmes à partir du nom de chaque modificateur."
+icon = "cil-keyboard"
+link = { href = "https://gitlab.gnome.org/GNOME/gtk/-/blob/main/gtk/gtkaccelgroup.c", text = "Gitlab GNOME" }
+
+[[extra.items]]
 title = "Corruption du tas dans GHC sur Windows avec Template Haskell"
 date = 2026-10-11
 description = "Sur Windows, l'utilisation de Template Haskel avec la FFI C (comme GTK…) peut provoquer une corruption du tas, menant à un crash du compilateur. Le problème est réglé en séparant le code utilisant Template Haskell du code utilisant la FFI dans une sous-bibliothèque séparée."

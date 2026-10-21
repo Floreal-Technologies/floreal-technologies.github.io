@@ -10,5 +10,5 @@ en fournissant des implémentations fiables de standards tels que les [Media Has
 
 Notre engagement envers la confiance dans la couverture de l'actualité est incarné par notre appartenance à la [Content Authenticity Initiative].
 
-[Media Hash Lists]: https://theasc.com/asc/asc-media-hash-list
+[Media Hash Lists]: https://theasc.com/wp-content/uploads/2026/06/ASCMHL_One-Sheet_v1-1_210121_102845.pdf
 [Content Authenticity Initiative]: https://contentauthenticity.org/
