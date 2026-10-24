@@ -4,6 +4,13 @@ description = "Ce que nous avons appris à la dure, et que nous aurions aimé ne
 template = "cursed-knowledge.html"
 
 [[extra.items]]
+title = "GHCi exécute le code hors du fil principal et macOS déteste ça"
+date = 2026-10-24
+description = "GHCi exécute chaque instruction sandboxée dans un nouveau fil. Sur macOS, Cocoa refuse de créer une fenêtre hors du fil principal : une application GTK lancée depuis GHCi (par exemple avec ghcid) plante avec « NSWindow should only be instantiated on the main thread! ». L'option (non documentée) -fno-ghci-sandbox fait exécuter l'instruction sur le fil principal, mais désactive le debugger intégré GHCi (mais qui utilise le debugger GHCi, on se le demande…)."
+icon = "cib-apple"
+link = { href = "https://gitlab.haskell.org/ghc/ghc/-/blob/8ab506ff3219560b20e1d9040e793371ba0efc52/libraries/ghci/GHCi/Run.hs#L231-257", text = "Gitlab Haskell" }
+
+[[extra.items]]
 title = "GTK affiche toujours Maj avant Ctrl pour les raccourcis clavier"
 date = 2026-10-21
 description = "GTK lit un raccourci clavier comme un ensemble de modificateurs, puis les affiche dans un ordre fixe : Maj, Ctrl, Alt, Super. Un raccourci écrit <Control><Shift>p s'affiche donc Maj+Ctrl+P, dans gtk_accelerator_get_label, GtkShortcutLabel, AdwShortcutLabel et GtkShortcutsWindow. Pour afficher Ctrl+Maj+P, nous devons construire l'étiquette nous-mêmes à partir du nom de chaque modificateur."
